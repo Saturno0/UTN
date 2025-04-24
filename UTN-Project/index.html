@@ -18,7 +18,7 @@
                     </ul>
                 </div>
                 
-                <h1 class="logo">Titulo</h1>
+                <h1 id="logo" class="logo">Titulo</h1>
     
                 <div class="right-menu">
                     <ul class="nav-links">
@@ -45,9 +45,6 @@
                 </div>
             </div>
             
-            <button class="slider-btn prev-btn">&lt;</button>
-            <button class="slider-btn next-btn">&gt;</button>
-            
             <div class="slider-dots">
                 <span class="dot active"></span>
                 <span class="dot"></span>
@@ -57,55 +54,38 @@
     </main>
 
     <script>
-        document.addEventListener('DOMContentLoaded', function() {
+
+        document.addEventListener('DOMContentLoaded', function () {
             let currentSlide = 0;
             const slides = document.querySelectorAll('.slide');
             const dots = document.querySelectorAll('.dot');
-            //const logo = document.querySelectorAll('.logo');
-            
-            function showSlide(n) {
-                // Hide all slides
+
+            function showSlide() {
                 slides.forEach(slide => slide.style.display = 'none');
-                // Remove active class from all dots
                 dots.forEach(dot => dot.classList.remove('active'));
-                
-                // Reset to first slide if at the end
-                if (n >= slides.length) currentSlide = 0;
-                // Go to last slide if going before the first slide
-                if (n < 0) currentSlide = slides.length - 1;
-                
-                // Show the current slide and activate the corresponding dot
+
+                if (currentSlide >= slides.length) currentSlide = 0;
+                if (currentSlide < 0) currentSlide = slides.length - 1;
+
                 slides[currentSlide].style.display = 'block';
                 dots[currentSlide].classList.add('active');
             }
-            
-            // Next/previous controls
-            if(document.querySelector('.next-btn').addEventListener('click'), function() {
-                showSlide(currentSlide += 1);
-            });
 
-            // document.querySelectorAll('.logo').addEventListener('click', function () {
-            //     window.location.href="#";
-            // })
-            
-            document.querySelector('.prev-btn').addEventListener('click', function() {
-                showSlide(currentSlide -= 1);
-            });
-            
-            // Dot controls
             dots.forEach((dot, index) => {
-                dot.addEventListener('click', function() {
+                dot.addEventListener('click', function () {
                     currentSlide = index;
-                    showSlide(currentSlide);
+                    showSlide();
                 });
             });
-            
-            // Auto-advance slides every 5 seconds
-            
-            
-            // Show the first slide initially
-            showSlide(currentSlide);
+
+            setInterval(function () {
+                currentSlide++;
+                showSlide();
+            }, 10000);
+
+            showSlide();
         });
+
     </script>
 </body>
 </html>
