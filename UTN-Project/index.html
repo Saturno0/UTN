@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="index.css">
+    <link rel="stylesheet" href="./styles/index.css">
     <title>E-commerce</title>
 </head>
 <body>
@@ -53,12 +53,31 @@
         </div>
     </main>
 
+    <footer>
+        <div class="footer-content">
+            
+            <div class="contact">
+                <h3>Contactanos</h3>
+                <a href="./pages/Formulario.html"><h4>Formulario</h4></a>
+                <p>Si quieres contactarnos, por favor envíanos un correo a nuestro mail, o completa el formulario</p>
+                <h4>Mail: <img src="/Icons/noun-mail-4808363.svg"></h4>
+
+            </div>
+
+            <div>
+                <h3>Redes sociales</h3>
+            </div>
+
+        </div>
+    </footer>
+
     <script>
 
         document.addEventListener('DOMContentLoaded', function () {
             let currentSlide = 0;
             const slides = document.querySelectorAll('.slide');
             const dots = document.querySelectorAll('.dot');
+            const milisegundos = 10000;
 
             function showSlide() {
                 slides.forEach(slide => slide.style.display = 'none');
@@ -81,7 +100,7 @@
             setInterval(function () {
                 currentSlide++;
                 showSlide();
-            }, 10000);
+            }, milisegundos);
 
             showSlide();
         });

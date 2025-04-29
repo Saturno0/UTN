@@ -2,15 +2,34 @@
 div {
     display: block;
     unicode-bidi: isolate;
-  }
+}
+
+.footer-content {
+  display: flex;
+  flex-direction: row;
+}
+
+.contact {
+  margin: 15px;
+  display: flex;
+  flex-direction: column;
+  width: 50%;
+}
+
+.contact h4 > img{
+  width: 30px;
+  height: 30px;
+}
+
+
   
-  li:hover {
+li:hover {
     cursor: pointer;
     scale: 1.15;
     transition: all 0.15s;
-  }
+}
   
-  .navbar {
+.navbar {
     border-bottom: 1px solid black;
     height: 79.5px;
     font-family: Arial, sans-serif;
@@ -20,7 +39,7 @@ div {
     right: 0;
     top: 0;
     width: 100%;
-  }
+}
   
   .top-bar {
     background-color: black;
@@ -44,12 +63,7 @@ div {
     align-items: center;
     width: 100%;
   }
-  
-  #logo {
-    flex: 1;
-    text-align: center;
-  }
-  
+
 .left-menu {
     flex: 1;
     display: flex;
@@ -61,8 +75,6 @@ div {
     display: flex;
     justify-content: flex-end;
 }
-  
-  
   
 .flex-row {
     align-items: center;
@@ -84,18 +96,20 @@ div {
   height: 100%;
 }
   
-  .container {
+.container {
   padding-left: 15px;
   padding-right: 15px;
   margin-left: auto;
   margin-right: auto;
-  }
+}
   
   
   /* Logo */
   
   #logo {
     width: 200px;
+    flex: 1;
+    text-align: center;
   }
   
   .logo-center .logo {
@@ -118,7 +132,7 @@ div {
     box-sizing: border-box;
   }
     
-    /* Estilos del menú en pantallas grandes */
+  /* Estilos del menú en pantallas grandes */
     .nav-links {
       top: 0;
       align-items: center;
@@ -137,7 +151,7 @@ div {
       position: relative;
     }
     
-    /* Menú desplegable de productos */
+    /* Menú desplegable de productos
     .dropdown-menu {
       position: absolute;
       top: 100%;
@@ -149,19 +163,8 @@ div {
       display: flex;
       flex-direction: column;
       gap: 5px;
-    }
-    
-    /* Estilos del menú en pantallas grandes */
-    .nav-links {
-      top: 0;
-      align-items: center;
-      justify-content: center;
-      list-style: none;
-      display: flex;
-      gap: 20px;
-      padding: 0;
-    }
-    
+    } */
+
     .cart-icon {
       font-size: 18px;
     }
