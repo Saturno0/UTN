@@ -2,9 +2,9 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../styles/formulario.css">
-    <title>Formulario</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">}
+    <link rel="stylesheet" href="../styles/producto1.css">
+    <title>E-commerce</title>
 </head>
 <body>
     <!-- Header -->
@@ -42,20 +42,37 @@
     <!-- Fin del header -->
 
     <main>
-        <div class="formulario">
-            <h2>Formulario de contacto</h2>
-            <div class="formulario-container">
-                <form action="submit" class="formulario-form">
-                    <label for="NAME">Nombre:</label>
-                    <input type="text" name="nombre" id="NAME">
-                    <label for="EMAIL">Email:</label>
-                    <input type="email" name="email" id="EMAIL">
-                    <label for="TELEFONO">Teléfono:</label>
-                    <input type="tel" name="telefono" id="TELEFONO">
-                    <label for="MENSAJE">Mensaje</label>
-                    <textarea name="mensaje" id="MENSAJE" cols="30" rows="10"></textarea>
-                    <input type="submit" value="ENVIAR" id="Enviar">
-                </form>
+        <div class="product">
+            <h1>Producto Destacado</h1>
+            <div class="product-details">
+                <div class="product-image">
+                    <img src="https://cameo-oficial.com.ar/wp-content/uploads/2025/01/CATALOGO_Mesa-de-trabajo-1-2-scaled.jpg" alt="imagen de producto">
+                </div>
+                <div class="product-info">
+                    <h2>Nombre del Producto</h2>
+                    <div class="product-rating">⭐⭐⭐☆☆ (3.0) · 13 opiniones</div>
+                    <p>Descripción del producto. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Perfecto para el uso diario.</p>
+                    
+                    <p class="stock">En stock</p>
+                    <p class="price">$300 </p>
+
+                    <label for="size">Tamaño:</label>
+                    <select id="size" name="size">
+                        <option>S</option>
+                        <option>M</option>
+                        <option>L</option>
+                        <option>XL</option>
+                    </select>
+
+                    <ul class="specs">
+                        <li>Material: Algodón 100%</li>
+                        <li>Peso: 500g</li>
+                        <li>Fabricado en: España</li>
+                    </ul>
+
+                    <button>Añadir al carrito</button>
+                    <button class="add-to-wishlist">❤️ Añadir a favoritos</button>
+                </div>
             </div>
         </div>
     </main>
@@ -65,8 +82,8 @@
             <div class="footer-section">
                 <h2>Navegación</h2>
                 <ul class="footer-links">
-                    <li><a href="../index.html">Inicio</a></li>
-                    <li><a href="../index.html#productos">Productos</a></li>
+                    <li><a href="index.html">Inicio</a></li>
+                    <li><a href="#productos">Productos</a></li>
                     <li><a href="#nuevo-ingreso">Nuevo Ingreso</a></li>
                     <li><a href="#mas-vendidos">Más Vendidos</a></li>
                 </ul>
@@ -86,7 +103,7 @@
                 <h2>Contacto</h2>
                 <div class="contact-info">
                     <p>¿Tienes alguna pregunta? Contáctanos por correo o completa nuestro formulario.</p>
-                    <a href="./pages/Formulario.html">Formulario de Contacto</a>
+                    <a href="./Formulario.html">Formulario de Contacto</a>
                 </div>
                 
                 <p>Redes sociales:</p>
