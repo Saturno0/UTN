@@ -1,11 +1,12 @@
 {
   "products": [
     {
+      "id": 1,
       "nombre": "Nombre del Producto",
       "imagen": "https://cameo-oficial.com.ar/wp-content/uploads/2025/04/54.jpg",
-      "calificación": 4.0,
+      "calificacion": 4.0,
       "opiniones": 23,
-      "descripción": "Descripción del producto. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Perfecto para el uso diario.",
+      "descripcion": "Descripción del producto. Perfecto para el uso diario.",
       "stock": true,
       "descuento": 20,
       "precio_actual": 100,
@@ -15,14 +16,24 @@
         "material": "Algodón 100%",
         "peso": "500g",
         "fabricado_en": "Argentina"
+      },
+      "colores": {
+        "Beige": 0,
+        "Blanco": 0,
+        "Bordo": 0,
+        "Chocolate": 0,
+        "Negro": 0,
+        "Verde": 0,
+        "Topo": 0
       }
     },
     {
+      "id": 2,
       "nombre": "Nombre del Producto",
       "imagen": "https://cameo-oficial.com.ar/wp-content/uploads/2025/04/1-scaled.jpg",
-      "calificación": 4.0,
+      "calificacion": 4.0,
       "opiniones": 23,
-      "descripción": "Descripción del producto. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Perfecto para el uso diario.",
+      "descripcion": "Descripción del producto. Perfecto para el uso diario.",
       "stock": true,
       "descuento": 20,
       "precio_actual": 250,
@@ -32,14 +43,24 @@
         "material": "Algodón 100%",
         "peso": "500g",
         "fabricado_en": "Argentina"
+      },
+      "colores": {
+        "Beige": 0,
+        "Blanco": 0,
+        "Bordo": 0,
+        "Chocolate": 0,
+        "Negro": 0,
+        "Verde": 0,
+        "Topo": 0
       }
     },
     {
+      "id": 3,
       "nombre": "Nombre del Producto",
       "imagen": "https://cameo-oficial.com.ar/wp-content/uploads/2025/02/CATALOGO-05-3-scaled.jpg",
-      "calificación": 4.0,
+      "calificacion": 4.0,
       "opiniones": 23,
-      "descripción": "Descripción del producto. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Perfecto para el uso diario.",
+      "descripcion": "Descripción del producto. Perfecto para el uso diario.",
       "stock": true,
       "descuento": 30,
       "precio_actual": 150,
@@ -49,14 +70,24 @@
         "material": "Algodón 100%",
         "peso": "500g",
         "fabricado_en": "Argentina"
+      },
+      "colores": {
+        "Beige": 0,
+        "Blanco": 0,
+        "Bordo": 0,
+        "Chocolate": 0,
+        "Negro": 0,
+        "Verde": 0,
+        "Topo": 0
       }
     },
     {
+      "id": 4,
       "nombre": "Nombre del Producto",
       "imagen": "https://cameo-oficial.com.ar/wp-content/uploads/2025/01/CATALOGO_Mesa-de-trabajo-1-2-scaled.jpg",
-      "calificación": 3.0,
+      "calificacion": 3.0,
       "opiniones": 13,
-      "descripción": "Descripción del producto. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Perfecto para el uso diario.",
+      "descripcion": "Descripción del producto. Perfecto para el uso diario.",
       "stock": true,
       "descuento": 0,
       "precio_actual": 300,
@@ -66,6 +97,15 @@
         "material": "Algodón 100%",
         "peso": "500g",
         "fabricado_en": "Argentina"
+      },
+      "colores": {
+        "Beige": 0,
+        "Blanco": 0,
+        "Bordo": 0,
+        "Chocolate": 0,
+        "Negro": 0,
+        "Verde": 0,
+        "Topo": 0
       }
     }
   ]

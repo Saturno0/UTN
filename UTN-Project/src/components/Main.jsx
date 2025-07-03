@@ -1,10 +1,12 @@
-import './style/Index.css';
+
 import ProductsLister from './ProductsLister';
 import Slides from './Slides';
 import PropTypes from 'prop-types';
 
 
 const Main = ( {products} ) =>{
+    console.log(products);
+
     return(
         <main>
             <Slides />
@@ -19,13 +21,25 @@ const Main = ( {products} ) =>{
 }
 
 Main.propTypes = {
-    productos: PropTypes.arrayOf(
+    products: PropTypes.arrayOf(
         PropTypes.shape({
+            id: PropTypes.number.isRequired,
             nombre: PropTypes.string.isRequired,
             imagen: PropTypes.string.isRequired,
-            descripcion: PropTypes.string.isRequired,
-            precio: PropTypes.number.isRequired
-        })
+            calificación: PropTypes.number.isRequired,
+            opiniones: PropTypes.number.isRequired,
+            descripción: PropTypes.string.isRequired,
+            descuento: PropTypes.number.isRequired,
+            stock: PropTypes.bool.isRequired,
+            precio_actual: PropTypes.number.isRequired,
+            precio_original: PropTypes.number.isRequired,
+            tamaños: PropTypes.arrayOf(PropTypes.string).isRequired,
+            especificaciones: PropTypes.shape({
+                material: PropTypes.string.isRequired,
+                peso: PropTypes.string.isRequired,
+                fabricado_en: PropTypes.string.isRequired
+            }).isRequired
+        }).isRequired
     ).isRequired
 };
 

@@ -1,45 +1,90 @@
-import { useParams } from "react-router-dom"
-import products from "/root/UTN-Project/UTN-Project/data/products.json";
+import { useDispatch } from 'react-redux';
+import { addToCart } from '../redux/cartSlice';
+import { useState } from 'react';
 
-const ProductDetail = ({onAddToCart}) => {
-    const {id} = useParams();
-    const product = products.products.find(producto => producto.id === parseInt(id));
+const ProductDetail = ({ product }) => {
+    const dispatch = useDispatch();
+    const [quantities, setQuantities] = useState(product.colores);
+    console.log(quantities);
 
-    return(
-        <div class="product">
+    const handleQuantityChange = (color, value) => {
+        setQuantities({
+            ...quantities,
+            [color]: parseInt(value) || 0
+        });
+    };
+    
+    return (
+        <div className="product">
             <h1>Producto Destacado</h1>
-            <div class="product-details">
-                <div class="product-image">
-                    <img src={product.image} alt="imagen de producto" />
+            <div className="product-details">
+                <div className="product-image">
+                    <img src={product.imagen} alt={product.nombre} />
                 </div>
-                <div class="product-info">
-                    <h2>{product.name}</h2>
-                    <div class="product-rating">⭐⭐⭐⭐☆ ({product.calificación}) · {product.opiniones} opiniones</div>
-                    <p>{product.description}</p>
+                <div className="product-info">
+                    <h2>{product.nombre}</h2>
+                    <div className="product-rating">
+                        ⭐⭐⭐⭐☆ ({product.calificación}) · {product.opiniones} opiniones
+                    </div>
+                    <p>{product.descripción}</p>
 
-                    <p class="stock">En stock</p>
-                    <p class="discount">¡{product.discount}% de descuento por tiempo limitado!</p>
-                    <p class="price">${product.price} <del style="color:#888; font-size: 1rem;">${product.oldPrice}</del></p>
+                    {product.stock ? <p className="stock">En stock</p> : <p className="stock">Sin stock</p>}
+                    {product.descuento > 0 && (
+                        <p className="discount">¡{product.descuento}% de descuento por tiempo limitado!</p>
+                    )}
 
-                    <label for="size">Tamaño:</label>
+                    <p className="price">
+                        ${product.precio_actual}{" "}
+                        {product.precio_actual !== product.precio_original && (
+                            <del style={{ color: "#888", fontSize: "1rem" }}>${product.precio_original}</del>
+                        )}
+                    </p>
+
+                    <label htmlFor="size">Tamaño:</label>
                     <select id="size" name="size">
-                        <option>S</option>
-                        <option>M</option>
-                        <option>L</option>
-                        <option>XL</option>
+                        {product.tamaños.map((t) => (
+                            <option key={t}>{t}</option>
+                        ))}
                     </select>
 
-                    <ul class="specs">
-                        <li>Material: Algodón 100%</li>
-                        <li>Peso: 500g</li>
-                        <li>Fabricado en: España</li>
+                    <ul className="specs">
+                        <li>Material: {product.especificaciones.material}</li>
+                        <li>Peso: {product.especificaciones.peso}</li>
+                        <li>Fabricado en: {product.especificaciones.fabricado_en}</li>
                     </ul>
 
-                    <button onClick={() => onAddToCart(product)}>Añadir al carrito</button>
+                    <table className="color-table">
+                        <thead>
+                            <tr>
+                                <th>COLOR</th>
+                                <th>CANTIDAD</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {quantities.map((color) => (
+                                <tr key={color}>
+                                    <td>{color}</td>
+                                    <td>
+                                        <input
+                                            type="number"
+                                            min="0"
+                                            value={quantities[color]}
+                                            onChange={(e) => handleQuantityChange(color, e.target.value)}
+                                        />
+                                        <span className="stock-status">Hay existencias</span>
+                                    </td>
+                                </tr>
+                            ))}
+                        </tbody>
+                    </table>
+
+                    <button onClick={() => dispatch(addToCart(product.id))}>Añadir al carrito</button>
                 </div>
             </div>
         </div>
     );
-}
+};
+
 
 export default ProductDetail;
+

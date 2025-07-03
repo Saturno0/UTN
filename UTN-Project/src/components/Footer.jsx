@@ -1,4 +1,4 @@
-import './style/Index.css';
+
 
 function Footer() {
     return (
