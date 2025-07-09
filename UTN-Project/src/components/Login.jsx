@@ -1,21 +1,25 @@
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { register } from '../hooks/userSlice';
+import { useNavigate } from 'react-router-dom';
 
 const Login = () => {
   const dispatch = useDispatch();
+  const navigate = useNavigate();
+  const [email, setEmail] = useState('');
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    dispatch(register({ username, password }));
+    dispatch(register({ username, email, password }));
+    navigate(-1)
   };
 
   return (
     <main className="login-page-container">
         <form className="login-form" onSubmit={handleSubmit}>
-          <h2 className="login-title">Login</h2>
+          <h2 className="login-title">Crear cuenta</h2>
 
           <label className="login-label">Nombre de usuario</label>
           <input
@@ -23,6 +27,17 @@ const Login = () => {
             type="text"
             value={username}
             onChange={(e) => setUsername(e.target.value)}
+            placeholder='Ingrese su nombre de usuario'
+            required
+          />
+
+          <label htmlFor='email' className='login-label'>Email</label>
+          <input
+            className="login-input"
+            type="email"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+            placeholder='Ingrese su email'
             required
           />
 
@@ -32,10 +47,11 @@ const Login = () => {
             type="password"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
+            placeholder='Ingrese su contraseña'
             required
           />
 
-          <button className="login-button" type="submit">
+          <button className="login-button" type="submit" onSubmit={handleSubmit}>
             Registrarse
           </button>
         </form>

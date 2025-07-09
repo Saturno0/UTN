@@ -18,9 +18,9 @@
         "fabricado_en": "Argentina"
       },
       "colores": [
-        {"nombre":"Beige", "cantidad":0, "stok": 15},
-        {"nombre":"Blanco", "cantidad":0, "stok": 15},
-        {"nombre":"Bordo", "cantidad":0, "stok": 15}
+        {"nombre":"Beige", "cantidad":0, "stock": 15},
+        {"nombre":"Blanco", "cantidad":0, "stock": 15},
+        {"nombre":"Bordo", "cantidad":0, "stock": 15}
       ]
     },
     {
@@ -41,9 +41,9 @@
         "fabricado_en": "Argentina"
       },
       "colores": [
-        {"nombre":"Beige", "cantidad":0, "stok": 15},
-        {"nombre":"Blanco", "cantidad":0, "stok": 15},
-        {"nombre":"Bordo", "cantidad":0, "stok": 15}
+        {"nombre":"Beige", "cantidad":0, "stock": 15},
+        {"nombre":"Blanco", "cantidad":0, "stock": 15},
+        {"nombre":"Bordo", "cantidad":0, "stock": 15}
       ]
     },
     {
@@ -64,9 +64,9 @@
         "fabricado_en": "Argentina"
       },
       "colores": [
-        {"nombre":"Beige", "cantidad":0, "stok": 15},
-        {"nombre":"Blanco", "cantidad":0, "stok": 15},
-        {"nombre":"Bordo", "cantidad":0, "stok": 15}
+        {"nombre":"Beige", "cantidad":0, "stock": 15},
+        {"nombre":"Blanco", "cantidad":0, "stock": 15},
+        {"nombre":"Bordo", "cantidad":0, "stock": 15}
       ]
     },
     {
@@ -87,9 +87,9 @@
         "fabricado_en": "Argentina"
       },
       "colores": [
-        {"nombre":"Beige", "cantidad":0, "stok": 15},
-        {"nombre":"Blanco", "cantidad":0, "stok": 15},
-        {"nombre":"Bordo", "cantidad":0, "stok": 15}
+        {"nombre":"Beige", "cantidad":0, "stock": 15},
+        {"nombre":"Blanco", "cantidad":0, "stock": 15},
+        {"nombre":"Bordo", "cantidad":0, "stock": 15}
       ]
     }
   ]

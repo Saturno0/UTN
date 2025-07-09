@@ -6,7 +6,9 @@ const ProductCard = ({ productos, id }) => {
         <Link to={{
                 pathname: `/producto/${producto.id}`,
                 hash: "#main"
-            }} state={{productos: productos, producto: producto}}>
+            }} 
+            state={{productos: productos, producto: producto}}
+        >
             <div className="card">
                 <h2>{producto.nombre}</h2>
                 <img src={producto.imagen} alt={`imagen de ${producto.nombre}`} />

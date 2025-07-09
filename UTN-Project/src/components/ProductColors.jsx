@@ -11,19 +11,19 @@ const ProductColors = ({ product, quantities, onQuantityChange }) => {
                 </tr>
             </thead>
             <tbody>
-                {product.colores.map(({ nombre, stok }) => (
+                {product.colores.map(({ nombre, stock }) => (
                     <tr key={nombre}>
                         <td>{nombre}</td>
                         <td>
                             <input
                                 type="number"
                                 min="0"
-                                max={stok}
+                                max={stock}
                                 value={quantities[nombre]}
                                 onChange={(e) => onQuantityChange(nombre, e.target.value)}
                             />
                         </td>
-                        <td>{stok}</td>
+                        <td>{stock}</td>
                     </tr>
                 ))}
             </tbody>

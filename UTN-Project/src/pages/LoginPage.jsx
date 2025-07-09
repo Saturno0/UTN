@@ -1,7 +1,7 @@
-import Login from '../components/Loggin';
+import Login from '../components/Login';
 import NavBar from '../components/Navbar';
 import Footer from '../components/Footer';
-import '../style/Loggin.css'
+import '../styles/Login.css'
 
 const LoginPage = () => {
   return (

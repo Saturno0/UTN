@@ -2,7 +2,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
 import Cart from '../components/Cart';
-import '../style/Cart.css';
+import '../styles/Cart.css';
 
 
 const CartPage = () => {
@@ -11,7 +11,7 @@ const CartPage = () => {
     const user = useSelector((state) => state.user);
 
     const groupedItems = cartItems.reduce((acc, item) => {
-        const key = `${item.name}-${item.color}`;
+        const key = `${item.id}-${item.name}-${item.color}`;
         if (!acc[key]) {
             acc[key] = { ...item, quantity: 1 };
         } else {

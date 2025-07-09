@@ -9,6 +9,7 @@ const ProductDetail = ({ product }) => {
     const dispatch = useDispatch();
     const [quantities, setQuantities] = useState({});
     const [price, setPrice] = useState(0);
+    console.log(product)
     
 
     useEffect(() => {
@@ -32,7 +33,7 @@ const ProductDetail = ({ product }) => {
     const handleAddToCart = () => {
         Object.entries(quantities).forEach(([colorName, qty]) => {
             for (let i = 0; i < qty; i++) {
-                dispatch(addToCart({ name: product.nombre, color: colorName, price: product.precio_actual }));
+                dispatch(addToCart({ name: product.nombre, id: product.id ,color: colorName, price: product.precio_actual }));
             }
         });
 

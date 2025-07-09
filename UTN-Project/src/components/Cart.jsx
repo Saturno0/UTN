@@ -1,7 +1,7 @@
 import EmptyCart from './EmptyCart.jsx';
 import CartItems from './CartItems.jsx';
 
-const Cart = ({user, items, total, dispatch }) => {
+const Cart = ({ items, total, dispatch }) => {
     
     return (
         <main className="cart-page container">

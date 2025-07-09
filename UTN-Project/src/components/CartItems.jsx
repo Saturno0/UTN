@@ -1,7 +1,9 @@
 import { removeFromCart, clearCart } from "../hooks/cartSlice";
+import { Link, useNavigate } from "react-router-dom";
 
 
 const CartItems = ({user, items, total, dispatch }) => {
+    const navigate = useNavigate();
     return(
         <>
             <table className="cart-table" id="cart-table">
@@ -17,7 +19,7 @@ const CartItems = ({user, items, total, dispatch }) => {
                 </thead>
                 <tbody>
                     {items.map((item) => (
-                        <tr key={`${item.name}-${item.color}`} className="cart-item-row">
+                        <tr key={`${item.id}-${item.name}-${item.color}`} className="cart-item-row">
                             <td>{item.name}</td>
                             <td>{item.color}</td>
                             <td>{item.quantity}</td>
@@ -41,9 +43,14 @@ const CartItems = ({user, items, total, dispatch }) => {
             <div className="cart-actions">
                 <button className="btn-buy" onClick={() => {
                     if (!user) {
-                        
+                        navigate('/login');
+                    } else {
+                        navigate('/checkout');
                     }
-                }}>Comprar</button>
+                }}>
+                    Comprar
+                </button>
+                
                 <Link to="/" className="btn-continue">Seguir comprando</Link> 
             </div>
         </>
