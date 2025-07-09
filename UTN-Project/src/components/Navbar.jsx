@@ -1,8 +1,10 @@
 import React, {  useState  } from 'react';
+import { useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 
 function Navbar() {
     const [menuOpen, setMenuOpen] = useState(false);
+    const totalItems = useSelector((state) => state.cart.totalItems);
     
     return(
         <header>
@@ -38,7 +40,14 @@ function Navbar() {
                             <ul className="nav-links">
                                 <li><h3>Buscar</h3></li>
                                 <li><h3>Acceder</h3></li>
-                                <li><h3>Iniciar sesión</h3></li>
+                                <li>
+                                    <Link to={{
+                                        pathname: "/cart",
+                                        hash: "#"
+                                    }}>
+                                        <h3>Carrito({totalItems})</h3>
+                                    </Link>
+                                </li>
                             </ul>
                         </div>
                     </div>

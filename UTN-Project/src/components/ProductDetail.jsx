@@ -1,19 +1,62 @@
 import { useDispatch } from 'react-redux';
-import { addToCart } from '../redux/cartSlice';
-import { useState } from 'react';
+import { addToCart } from '../hooks/cartSlice';
+import { useState, useEffect } from 'react';
+import ProductColors from './ProductColors';
+import ProductInfo from './ProductInfo';
+
 
 const ProductDetail = ({ product }) => {
     const dispatch = useDispatch();
-    const [quantities, setQuantities] = useState(product.colores);
-    console.log(quantities);
+    const [quantities, setQuantities] = useState({});
+    const [price, setPrice] = useState(0);
+    
 
-    const handleQuantityChange = (color, value) => {
+    useEffect(() => {
+        if (product?.colores && Array.isArray(product.colores)) {
+            const initialQuantities = product.colores.reduce((acc, colorObj) => {
+                acc[colorObj.nombre] = 0;
+                return acc;
+            }, {});
+            setQuantities(initialQuantities);
+        }
+    }, [product]);
+
+    const handleQuantityChange = (colorName, value) => {
         setQuantities({
             ...quantities,
-            [color]: parseInt(value) || 0
+            [colorName]: Math.max(0, parseInt(value) || 0)
         });
+        console.log(`precio: ${price}`)
+    }
+
+    const handleAddToCart = () => {
+        Object.entries(quantities).forEach(([colorName, qty]) => {
+            for (let i = 0; i < qty; i++) {
+                dispatch(addToCart({ name: product.nombre, color: colorName, price: product.precio_actual }));
+            }
+        });
+
+        // Reset después de agregar
+        const resetQuantities = product.colores.reduce((acc, colorObj) => {
+            acc[colorObj.nombre] = 0;
+            return acc;
+        }, {});
+        setQuantities(resetQuantities);
     };
-    
+
+    const totalQty = Object.values(quantities).reduce((sum, q) => sum + q, 0);
+
+    useEffect(() => {
+        if (product?.precio_actual) {
+            setPrice(totalQty * product.precio_actual);
+        }
+    }, [quantities, product?.precio_actual, totalQty]);
+
+    // Mientras se carga el producto o los colores
+    if (!product || !product.colores || Object.keys(quantities).length === 0) {
+        return <div>Cargando producto...</div>;
+    }
+
     return (
         <div className="product">
             <h1>Producto Destacado</h1>
@@ -22,69 +65,28 @@ const ProductDetail = ({ product }) => {
                     <img src={product.imagen} alt={product.nombre} />
                 </div>
                 <div className="product-info">
-                    <h2>{product.nombre}</h2>
-                    <div className="product-rating">
-                        ⭐⭐⭐⭐☆ ({product.calificación}) · {product.opiniones} opiniones
-                    </div>
-                    <p>{product.descripción}</p>
 
-                    {product.stock ? <p className="stock">En stock</p> : <p className="stock">Sin stock</p>}
-                    {product.descuento > 0 && (
-                        <p className="discount">¡{product.descuento}% de descuento por tiempo limitado!</p>
-                    )}
+                    <ProductInfo product={product} />
 
-                    <p className="price">
-                        ${product.precio_actual}{" "}
-                        {product.precio_actual !== product.precio_original && (
-                            <del style={{ color: "#888", fontSize: "1rem" }}>${product.precio_original}</del>
-                        )}
+                    <ProductColors
+                        product={product}
+                        quantities={quantities}
+                        onQuantityChange={handleQuantityChange}
+                    />
+
+                    <button
+                        onClick={handleAddToCart}
+                        disabled={totalQty === 0}
+                    >
+                        Añadir al carrito ({totalQty})
+                    </button>
+                    <p>
+                        <strong>Total: {price}</strong>
                     </p>
-
-                    <label htmlFor="size">Tamaño:</label>
-                    <select id="size" name="size">
-                        {product.tamaños.map((t) => (
-                            <option key={t}>{t}</option>
-                        ))}
-                    </select>
-
-                    <ul className="specs">
-                        <li>Material: {product.especificaciones.material}</li>
-                        <li>Peso: {product.especificaciones.peso}</li>
-                        <li>Fabricado en: {product.especificaciones.fabricado_en}</li>
-                    </ul>
-
-                    <table className="color-table">
-                        <thead>
-                            <tr>
-                                <th>COLOR</th>
-                                <th>CANTIDAD</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            {quantities.map((color) => (
-                                <tr key={color}>
-                                    <td>{color}</td>
-                                    <td>
-                                        <input
-                                            type="number"
-                                            min="0"
-                                            value={quantities[color]}
-                                            onChange={(e) => handleQuantityChange(color, e.target.value)}
-                                        />
-                                        <span className="stock-status">Hay existencias</span>
-                                    </td>
-                                </tr>
-                            ))}
-                        </tbody>
-                    </table>
-
-                    <button onClick={() => dispatch(addToCart(product.id))}>Añadir al carrito</button>
                 </div>
             </div>
         </div>
     );
 };
 
-
 export default ProductDetail;
-

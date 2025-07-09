@@ -1,42 +1,40 @@
-import PropTypes from 'prop-types';
-import { Link } from 'react-router-dom';
 
-const ProductInfo = ({ productos, id }) => {
-    const producto = productos.find((prod) => prod.id === id);
+
+const ProductInfo = ({ product }) => {
     return (
-        <Link to={{
-                pathname: `/producto/${producto.id}`,
-                hash: "#main"
-            }} state={{productos: productos, producto: producto}}>
-            <div className="card">
-                <h2>{producto.nombre}</h2>
-                <img src={producto.imagen} alt={`imagen de ${producto.nombre}`} />
-                <p>{producto.descripcion}</p>
-                <p>Precio: ${producto.precio_actual}</p>
+        <>
+            <h2>{product.nombre}</h2>
+            <div className="product-rating">
+                ⭐⭐⭐⭐☆ ({product.calificacion}) · {product.opiniones} opiniones
             </div>
-        </Link>
-    );
-};
+            <p>{product.descripcion}</p>
 
-ProductInfo.propTypes = {
-    product: PropTypes.shape({
-        nombre: PropTypes.string.isRequired,
-        imagen: PropTypes.string.isRequired,
-        calificación: PropTypes.number.isRequired,
-        opiniones: PropTypes.number.isRequired,
-        descripción: PropTypes.string.isRequired,
-        descuento: PropTypes.number.isRequired,
-        stock: PropTypes.bool.isRequired,
-        precio_actual: PropTypes.number.isRequired,
-        precio_original: PropTypes.number.isRequired,
-        tamaños: PropTypes.arrayOf(PropTypes.string).isRequired,
-        especificaciones: PropTypes.shape({
-            material: PropTypes.string.isRequired,
-            peso: PropTypes.string.isRequired,
-            fabricado_en: PropTypes.string.isRequired
-        }).isRequired
-    }).isRequired
-};
+            {product.stock ? <p className="stock">En stock</p> : <p className="stock">Sin stock</p>}
+            {product.descuento > 0 && (
+                <p className="discount">¡{product.descuento}% de descuento por tiempo limitado!</p>
+            )}
 
+            <p className="price">
+                ${product.precio_actual}{" "}
+                {product.precio_actual !== product.precio_original && (
+                    <del style={{ color: "#888", fontSize: "1rem" }}>${product.precio_original}</del>
+                )}
+            </p>
+
+            <label htmlFor="size">Tamaño:</label>
+            <select id="size" name="size">
+                {product.tamaños.map((t) => (
+                    <option key={t}>{t}</option>
+                ))}
+            </select>
+
+            <ul className="specs">
+                <li>Material: {product.especificaciones.material}</li>
+                <li>Peso: {product.especificaciones.peso}</li>
+                <li>Fabricado en: {product.especificaciones.fabricado_en}</li>
+            </ul>
+        </>
+    )
+}
 
 export default ProductInfo;

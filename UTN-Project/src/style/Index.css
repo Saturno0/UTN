@@ -277,20 +277,6 @@ div {
       cursor: pointer;
       position: relative;
     }
-    
-    
-    .dropdown-menu {
-      position: absolute;
-      top: 100%;
-      left: 0;
-      background-color: white;
-      border: 1px solid #ddd;
-      padding: 10px;
-      list-style: none;
-      display: flex;
-      flex-direction: column;
-      gap: 5px;
-    }
 
     .cart-icon {
       font-size: 18px;
@@ -456,7 +442,7 @@ a {
   .header-inner.flex-row.container {
     padding-left: 0;
   }
-
+  
   .nav-links {
     display: none;
     flex-direction: column;
@@ -468,6 +454,11 @@ a {
     box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
   }
   
+  .nav-links.open {
+    display: flex;
+    padding: 15px 0;
+  }
+
   .nav-container {
       display: flex;
       justify-content: space-between;
@@ -480,7 +471,6 @@ a {
     transition: max-height 0.3s ease;
     overflow: hidden;
     margin-top: 30px;
-    display: flex;
     flex-direction: column;
     gap: 10px;
     padding: 10px;
@@ -493,7 +483,4 @@ a {
     z-index: 1000;
   }
 
-  .dropdown-menu {
-    position: static;
-  }
 }

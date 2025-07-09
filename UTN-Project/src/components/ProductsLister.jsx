@@ -1,10 +1,10 @@
-import ProductInfo from "./ProductInfo";
+import ProductCard from "./ProductCard";
 import PropTypes from 'prop-types';
 
 const ProductsLister = ( {productos} ) => {
     return (
         productos.map((producto) => (
-             <ProductInfo key={producto.id} productos={productos} id={producto.id} />
+             <ProductCard key={producto.id} productos={productos} id={producto.id} />
         ))
     );
 }

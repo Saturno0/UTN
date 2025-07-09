@@ -1,4 +1,4 @@
-
+import { Link } from "react-router-dom";
 
 function Footer() {
     return (
@@ -7,10 +7,14 @@ function Footer() {
                 <div className="footer-section">
                     <h2>Navegación</h2>
                     <ul className="footer-links">
-                        <li><a href="index.html">Inicio</a></li>
-                        <li><a href="#productos">Productos</a></li>
-                        <li><a href="#nuevo-ingreso">Nuevo Ingreso</a></li>
-                        <li><a href="#mas-vendidos">Más Vendidos</a></li>
+                        <Link to="/"> <li>Inicio</li> </Link>
+                        <Link to={{
+                            pathname: "/",
+                            hash: "#products"
+                        }}> <li>Productos</li> 
+                        </Link>
+                        <li>Nuevo Ingreso</li>
+                        <li>Más Vendidos</li>
                     </ul>
                 </div>
             
@@ -28,7 +32,7 @@ function Footer() {
                     <h2>Contacto</h2>
                     <div className="contact-info">
                         <p>¿Tienes alguna pregunta? Contáctanos por correo o completa nuestro formulario.</p>
-                        <a href="./pages/Formulario.html">Formulario de Contacto</a>
+                        <Link to="/FormPage"> Formulario de Contacto </Link>
                     </div>
 
                     <p>Redes sociales:</p>
