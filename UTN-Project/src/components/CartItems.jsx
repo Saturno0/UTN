@@ -1,9 +1,16 @@
 import { removeFromCart, clearCart } from "../hooks/cartSlice";
 import { Link, useNavigate } from "react-router-dom";
+import { useEffect, useState } from "react";
 
 
-const CartItems = ({user, items, total, dispatch }) => {
+const CartItems = ({ items, total, dispatch }) => {
+    const [user, setUser] = useState([]);
     const navigate = useNavigate();
+    
+    useEffect(()=> {
+        setUser(JSON.parse(localStorage.getItem('user')));
+    }, [])
+    
     return(
         <>
             <table className="cart-table" id="cart-table">
@@ -42,7 +49,7 @@ const CartItems = ({user, items, total, dispatch }) => {
 
             <div className="cart-actions">
                 <button className="btn-buy" onClick={() => {
-                    if (!user) {
+                    if (!user.isRegistered) {
                         navigate('/login');
                     } else {
                         navigate('/checkout');

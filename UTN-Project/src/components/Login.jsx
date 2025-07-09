@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { register } from '../hooks/userSlice';
 import { useNavigate } from 'react-router-dom';
@@ -12,6 +12,7 @@ const Login = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    localStorage.setItem("user", JSON.stringify({ username, email }));
     dispatch(register({ username, email, password }));
     navigate(-1)
   };

@@ -6,7 +6,7 @@ const RightMenu = ({ user, totalItems, handleNavigation }) => {
             <div className="right-menu">
                 <ul className="nav-links">
                     <li onClick={() => handleNavigation()}>
-                        <h3>{user.isRegistred? `${user.name}` : "Acceder"}</h3>
+                        <h3>{user.isRegistered? `${user.username}` : "Acceder"}</h3>
                     </li>
                     <li>
                         <Link to={{

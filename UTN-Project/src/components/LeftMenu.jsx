@@ -20,7 +20,7 @@ const LeftMenu = ({ menuOpen, setMenuOpen, handleNavigation, user }) => {
                 <li className="links"><h3>Mas vendidos</h3></li>
                 {menuOpen && (
                     <li onClick={() => handleNavigation()}>
-                    <h3>{user.isRegistred? `${user.name}` : "Acceder"}</h3>
+                    <h3>{user.isRegistered? `${user.username}` : "Acceder"}</h3>
                     </li>
                 )}
             </ul>

@@ -13,8 +13,8 @@ function Navbar() {
     const navigate = useNavigate();
 
     const handleNavigation = () => {
-        if(user.isRegistred) {
-            navigate('/profile');
+        if(user.isRegistered) {
+            navigate('/profile'); //La idea es que en un futuro pueda acceder a su perfil
         } else {
             navigate('/login');
         }

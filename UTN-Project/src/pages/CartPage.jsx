@@ -8,7 +8,7 @@ import '../styles/Cart.css';
 const CartPage = () => {
     const dispatch = useDispatch();
     const cartItems = useSelector((state) => state.cart.products);
-    const user = useSelector((state) => state.user);
+    
 
     const groupedItems = cartItems.reduce((acc, item) => {
         const key = `${item.id}-${item.name}-${item.color}`;
@@ -19,6 +19,7 @@ const CartPage = () => {
         }
         return acc;
     }, {});
+    
 
     const items = Object.values(groupedItems);
     const total = items.reduce((sum, item) => (sum + (item.precio_actual || 100) * item.quantity), 0);
@@ -26,7 +27,7 @@ const CartPage = () => {
     return (
         <>
             <Navbar />
-            <Cart user={user} items={items} total={total} dispatch={dispatch} />
+            <Cart items={items} total={total} dispatch={dispatch} />
             <Footer />
         </>
     );
