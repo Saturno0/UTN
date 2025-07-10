@@ -1,17 +1,17 @@
 import { useState, useEffect } from "react";
+import image1 from '../assets/img/ChatGPT Image 1 may 2025, 17_48_14.png';
+import image2 from '../assets/img/ChatGPT Image 4 may 2025, 13_18_48.png';
 
 const Slides = () => {
-  const [currentSlide, setCurrentSlide] = useState(0);
+  const [currentSlide, setCurrentSlide] = useState(true);
   const milisegundos = 10000;
 
   useEffect(() => {
     const interval = setInterval(() => {
       setCurrentSlide((prevSlide) => !prevSlide);
     }, milisegundos);
-
-    // Limpieza del intervalo cuando el componente se desmonta
     return () => clearInterval(interval);
-  }, []); // El array vacío asegura que solo se ejecute una vez
+  }, []);
 
   return (
     <div className="slider-container">
@@ -20,12 +20,16 @@ const Slides = () => {
           className="slide"
           id="primero"
           style={{ display: currentSlide ? "block" : "none" }}
-        ></div>
+        >
+          <img src={image1} alt="primer slide" />
+        </div>
         <div
           className="slide"
           id="segundo"
           style={{ display: currentSlide ? "none" : "block" }}
-        ></div>
+        >
+          <img src={image2} alt="segundo slide" />
+        </div>
       </div>
     </div>
   );
