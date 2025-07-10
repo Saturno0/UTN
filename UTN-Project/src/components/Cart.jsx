@@ -22,7 +22,10 @@ const Cart = ({ items, total, dispatch }) => {
                 <>
                     <CartItems items={items} total={total} dispatch={dispatch} />
 
-                    <div className="cart-actions">
+                    <div className="cart-summary" id="cart-summary">
+                        <h2>Total: ${total}</h2>
+                        <button className="btn-clear" onClick={() => dispatch(clearCart())}>Vaciar carrito</button>
+                        <div className="cart-actions">
                         <button className="btn-buy" onClick={() => {
                             if (!user.isRegistered) {
                                 navigate('/login');
@@ -30,15 +33,11 @@ const Cart = ({ items, total, dispatch }) => {
                                 navigate('/checkout');
                             }
                         }}>
-                            Comprar
+                            Comprar 
                         </button>
 
                         <Link to="/" className="btn-continue">Seguir comprando</Link> 
                     </div>
-
-                    <div className="cart-summary" id="cart-summary">
-                        <h2>Total: ${total}</h2>
-                        <button className="btn-clear" onClick={() => dispatch(clearCart())}>Vaciar carrito</button>
                     </div>
                 </>
             )}

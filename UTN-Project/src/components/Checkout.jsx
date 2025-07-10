@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import CheckOutForm from "./CheckOutForm";
 import CartItems from "./CartItems";
+import { clearCart } from "../hooks/cartSlice";
 
 const Checkout = () => {
     const dispatch = useDispatch();
@@ -69,6 +70,7 @@ const Checkout = () => {
             if (data.success) {
                 alert("¡Compra realizada con éxito! En breve recibiras un mensaje para realiar el pago.");
                 navigate('/');
+                dispatch(clearCart(cartItems));
             } else {
                 throw new Error(data.message);
             }
