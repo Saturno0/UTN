@@ -5,7 +5,7 @@ import { useLocation } from 'react-router-dom';
 import '../styles/Product.css';
 
 
-const Product = () => {
+const ProductPage = () => {
     const { state } = useLocation();
     const producto = state.producto;
 
@@ -19,4 +19,4 @@ const Product = () => {
     );
 }
 
-export default Product;
+export default ProductPage;

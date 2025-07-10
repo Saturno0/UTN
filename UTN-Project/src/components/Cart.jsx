@@ -1,7 +1,16 @@
 import EmptyCart from './EmptyCart.jsx';
 import CartItems from './CartItems.jsx';
+import { useEffect, useState } from "react";
+import { useNavigate, Link } from 'react-router-dom';
+import { clearCart } from '../hooks/cartSlice.js';
 
 const Cart = ({ items, total, dispatch }) => {
+    const [user, setUser] = useState([]);
+    const navigate = useNavigate();
+
+    useEffect(()=> {
+        setUser(JSON.parse(localStorage.getItem('user')));
+    }, [])
     
     return (
         <main className="cart-page container">
@@ -10,7 +19,28 @@ const Cart = ({ items, total, dispatch }) => {
             {items.length === 0 ? (
                 <EmptyCart />
             ) : (
-                <CartItems items={items} total={total} dispatch={dispatch} />
+                <>
+                    <CartItems items={items} total={total} dispatch={dispatch} />
+
+                    <div className="cart-actions">
+                        <button className="btn-buy" onClick={() => {
+                            if (!user.isRegistered) {
+                                navigate('/login');
+                            } else {
+                                navigate('/checkout');
+                            }
+                        }}>
+                            Comprar
+                        </button>
+
+                        <Link to="/" className="btn-continue">Seguir comprando</Link> 
+                    </div>
+
+                    <div className="cart-summary" id="cart-summary">
+                        <h2>Total: ${total}</h2>
+                        <button className="btn-clear" onClick={() => dispatch(clearCart())}>Vaciar carrito</button>
+                    </div>
+                </>
             )}
         </main>
     );

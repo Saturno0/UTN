@@ -5,11 +5,13 @@ const storedUser = JSON.parse(localStorage.getItem('user'));
 const initialState = storedUser
   ? {
       username: storedUser.username,
+      email: storedUser.email,
       password: '',
       isRegistered: true,
     }
   : {
       username: '',
+      email: '',
       password: '',
       isRegistered: false,
     };
@@ -27,14 +29,16 @@ const userSlice = createSlice({
   initialState,
   reducers: {
     register: (state, action) => {
-      const { username, password } = action.payload;
+      const { username, email, password } = action.payload;
       state.username = username;
       state.password = password;
+      state.email = email;
       state.isRegistered = true;
       updateUserStorage(state);
     },
     logout: (state) => {
       state.username = '';
+      state.email = '';
       state.password = '';
       state.isRegistered = false;
       localStorage.removeItem('user');

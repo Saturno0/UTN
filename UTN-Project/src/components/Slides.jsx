@@ -1,35 +1,34 @@
+import { useState, useEffect } from "react";
 
+const Slides = () => {
+  const [currentSlide, setCurrentSlide] = useState(0);
+  const milisegundos = 10000;
 
-const Slides  = () => {
-    let currentSlide = 0;
-    const slides = document.querySelectorAll('.slide');
-    const milisegundos = 10000;
-
-    const showSlide = ()  =>{
-        slides.forEach(slide => slide.style.display = 'none');
-        
-        if (currentSlide >= slides.length) currentSlide = 0;
-        if (currentSlide < 0) currentSlide = slides.length - 1;
-        
-        slides[currentSlide].style.display = 'block';
-    }
-    
-    setInterval(function () {
-        currentSlide++;
-        showSlide();
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentSlide((prevSlide) => !prevSlide);
     }, milisegundos);
 
-    return (
-        <div className="slider-container">
-                <div className="slider">
-                    <div className="slide" id="primero">
-                    </div>
-                    <div className="slide" id="segundo">
-                    </div>
-                </div>
-        </div>
-    );
+    // Limpieza del intervalo cuando el componente se desmonta
+    return () => clearInterval(interval);
+  }, []); // El array vacío asegura que solo se ejecute una vez
 
-}
+  return (
+    <div className="slider-container">
+      <div className="slider">
+        <div
+          className="slide"
+          id="primero"
+          style={{ display: currentSlide ? "block" : "none" }}
+        ></div>
+        <div
+          className="slide"
+          id="segundo"
+          style={{ display: currentSlide ? "none" : "block" }}
+        ></div>
+      </div>
+    </div>
+  );
+};
 
 export default Slides;

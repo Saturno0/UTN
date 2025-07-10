@@ -4,7 +4,7 @@ import Footer from "../components/Footer";
 import products from '../../public/products.json';
 import '../styles/Index.css'
 
-function Principal() {
+function PrincipalPage() {
     const productsData = products.products;
     return (
         <>
@@ -15,4 +15,4 @@ function Principal() {
     )
 };
 
-export default Principal;
+export default PrincipalPage;
